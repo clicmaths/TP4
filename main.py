@@ -17,6 +17,27 @@ class rectangle:
         self.tilt_angle = 90
         self.colors = COLORS
 
+        def on_update(self):
+            if self.centre_x < self.longueur:
+                self.change_x *= -1
+
+            elif self.centre_x > SCREEN_WIDTH - self.rayon:
+                self.change_x *= -1
+
+            elif self.centre_y < self.largeur:
+                self.change_y *= -1
+
+            elif self.centre_y > SCREEN_HEIGHT - self.rayon:
+                self.change_y *= -1
+
+        def setup(self):
+            pass
+
+        def on_draw(self):
+            arcade.draw_rectangle_filled(self.centre_x, self.centre_y / self.longueur, self.largeur, self.colors, self.tilt_angle)
+
+
+
 
 class cercle:
     def __init__(self, x, y):
@@ -31,31 +52,31 @@ class cercle:
             if self.centre_x < self.rayon:
                 self.change_x *= -1
 
-            if self.centre_x > SCREEN_WIDTH - self.rayon:
-                pass
-            if self.centre_y < self.rayon:
-                pass
-            if self.centre_y > SCREEN_HEIGHT - self.rayon:
+            elif self.centre_x > SCREEN_WIDTH - self.rayon:
+                self.change_x *= -1
+
+            elif self.centre_y < self.rayon:
+                self.change_y *= -1
+
+            elif self.centre_y > SCREEN_HEIGHT - self.rayon:
                 self.change_y *= -1
 
         def setup(self):
             pass
         def on_draw(self):
-            pass
+            arcade.draw_circle_filled(self.centre_x, self.centre_y / self.rayon, self.colors)
 
 
 class MyGame(arcade.Window):
     def __init__(self):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Exercice #1")
-        pass
+        list
 
     def setup(self):
         pass
 
     def on_draw(self):
         arcade.start_render()
-
-        pass
 
 
 def main():
